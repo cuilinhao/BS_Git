@@ -21,6 +21,10 @@
 #import "UIImage+Image.h"
 
 
+#import "XMGTopic.h"
+
+
+
 #import "NSMutableArray+PFSafeArray.h"
 
 

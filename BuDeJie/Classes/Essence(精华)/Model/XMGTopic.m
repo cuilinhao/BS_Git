@@ -31,6 +31,12 @@
     if (self.type != XMGTopicTypeWord) { // 中间有内容（图片、声音、视频）
         CGFloat middleW = textMaxSize.width;
         CGFloat middleH = middleW * self.height / self.width;
+		
+		if (middleH >= XMGScreenH) {
+			middleH = 200;
+			self.bigPicture = YES;
+		}
+		
         CGFloat middleY = _cellHeight;
         CGFloat middleX = XMGMarin;
         self.middleFrame = CGRectMake(middleX, middleY, middleW, middleH);

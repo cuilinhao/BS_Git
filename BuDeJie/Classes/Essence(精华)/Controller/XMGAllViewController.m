@@ -150,7 +150,7 @@ static NSString * const XMGTopicCellId = @"XMGTopicCellId";
 #pragma mark - 数据处理
 - (XMGTopicType)type
 {
-    return XMGTopicTypeVideo;
+    return XMGTopicTypePicture;
 }
 
 /**
@@ -205,6 +205,9 @@ static NSString * const XMGTopicCellId = @"XMGTopicCellId";
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
     parameters[@"type"] = @(self.type);
+	//XMGTopicTypePicture
+//	parameters[@"type"] = @(XMGTopicTypePicture);
+	
     parameters[@"maxtime"] = self.maxtime;
     
     // 3.发送请求

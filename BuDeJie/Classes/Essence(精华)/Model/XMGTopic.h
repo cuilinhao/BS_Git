@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 typedef NS_ENUM(NSUInteger, XMGTopicType) {
     /** 全部 */
     XMGTopicTypeAll = 1,
@@ -30,6 +32,8 @@ typedef NS_ENUM(NSUInteger, XMGTopicType) {
 @property (nonatomic, copy) NSString *text;
 /** 帖子审核通过的时间 */
 @property (nonatomic, copy) NSString *passtime;
+//------
+
 
 /** 顶数量 */
 @property (nonatomic, assign) NSInteger ding;
@@ -58,6 +62,9 @@ typedef NS_ENUM(NSUInteger, XMGTopicType) {
 /** 大图 */
 @property (nonatomic, copy) NSString *image1;
 
+@property (nonatomic, assign) BOOL is_gif;
+
+
 /** 音频时长 */
 @property (nonatomic, assign) NSInteger voicetime;
 /** 视频时长 */
@@ -70,4 +77,8 @@ typedef NS_ENUM(NSUInteger, XMGTopicType) {
 @property (nonatomic, assign) CGFloat cellHeight;
 /** 中间内容的frame */
 @property (nonatomic, assign) CGRect middleFrame;
+
+
+@property (nonatomic, assign, getter=isBigPicture) BOOL bigPicture;
+
 @end
