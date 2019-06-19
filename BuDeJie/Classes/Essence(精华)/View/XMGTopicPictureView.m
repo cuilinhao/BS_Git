@@ -33,7 +33,6 @@
 {
 	_topic = topic;
 	
-	
 	// 设置图片
 	self.placeholderView.hidden = NO;
 	[self.imageView xmg_setOriginImage:topic.image1 thumbnailImage:topic.image0 placeholder:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -43,7 +42,6 @@
 	}];
 	
 	//gif
-	
 	XMGLog(@"---------%@----%@---%@", topic.image0, topic.image1, topic.image2);
 	
 	self.gifView.hidden = !topic.is_gif;
@@ -61,7 +59,6 @@
 		self.imageView.contentMode = UIViewContentModeScaleToFill;
 		self.imageView.clipsToBounds = NO;
 	}
-	
 }
 
 

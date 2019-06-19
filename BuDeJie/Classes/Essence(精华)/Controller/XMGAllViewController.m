@@ -156,6 +156,7 @@ static NSString * const XMGTopicCellId = @"XMGTopicCellId";
 /**
  *  发送请求给服务器，下拉刷新数据
  */
+//MARK:---------下拉刷新数据
 - (void)loadNewTopics
 {
     // 1.取消之前的请求
@@ -243,9 +244,13 @@ static NSString * const XMGTopicCellId = @"XMGTopicCellId";
     return self.topics.count;
 }
 
+//MARK:--配置cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XMGTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:XMGTopicCellId];
+    
+    NSLog(@"------%@", self.topics);
+    
     
     cell.topic = self.topics[indexPath.row];
     

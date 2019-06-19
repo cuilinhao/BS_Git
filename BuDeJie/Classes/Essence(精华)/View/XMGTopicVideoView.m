@@ -38,6 +38,7 @@
         self.placeholderView.hidden = YES;
     }];
     
+    
     // 播放数量
     if (topic.playcount >= 10000) {
         self.playcountLabel.text = [NSString stringWithFormat:@"%.1f万播放", topic.playcount / 10000.0];
