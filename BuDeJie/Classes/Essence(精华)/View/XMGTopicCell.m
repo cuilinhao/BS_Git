@@ -110,21 +110,24 @@
     // 中间的内容
     if (topic.type == XMGTopicTypePicture) { // 图片
         self.pictureView.hidden = NO;
+		self.pictureView.topic = topic;
         self.voiceView.hidden = YES;
         self.videoView.hidden = YES;
-        self.pictureView.topic = topic;
     } else if (topic.type == XMGTopicTypeVoice) { // 声音
         self.pictureView.hidden = YES;
+		self.voiceView.topic = topic;
         self.voiceView.hidden = NO;
         self.voiceView.topic = topic;
         self.videoView.hidden = YES;
     } else if (topic.type == XMGTopicTypeVideo) { // 视频
         self.pictureView.hidden = YES;
+		self.videoView.topic = topic;
         self.voiceView.hidden = YES;
         self.videoView.hidden = NO;
         self.videoView.topic = topic;
     } else if (topic.type == XMGTopicTypeWord) { // 段子
         self.pictureView.hidden = YES;
+		
         self.voiceView.hidden = YES;
         self.videoView.hidden = YES;
     }

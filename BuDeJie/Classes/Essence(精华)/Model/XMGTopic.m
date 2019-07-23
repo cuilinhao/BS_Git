@@ -32,7 +32,7 @@
         CGFloat middleW = textMaxSize.width;
         CGFloat middleH = middleW * self.height / self.width;
 		
-		if (middleH >= XMGScreenH) {
+		if (middleH >= XMGScreenH) {//图片超过一个屏幕高度
 			middleH = 200;
 			self.bigPicture = YES;
 		}
@@ -52,15 +52,17 @@
         NSDictionary *cmt = self.top_cmt.firstObject;
         NSString *content = cmt[@"content"];
         if (content.length == 0) {
+			//服务器返回的是语音，那么用语音评论进行计算
             content = @"[语音评论]";
         }
         NSString *username = cmt[@"user"][@"username"];
+		username = @"123123123123";
         NSString *cmtText = [NSString stringWithFormat:@"%@ : %@", username, content];
         _cellHeight += [cmtText boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + XMGMarin;
     }
     
     // 工具条
-    _cellHeight += 35 + XMGMarin;
+    _cellHeight += 35 + XMGMarin ;
     
     return _cellHeight;
 }

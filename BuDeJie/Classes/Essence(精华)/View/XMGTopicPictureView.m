@@ -45,20 +45,24 @@
 	XMGLog(@"---------%@----%@---%@", topic.image0, topic.image1, topic.image2);
 	
 	self.gifView.hidden = !topic.is_gif;
-	
+	UIScreen
 	//看大图
 	if (topic.isBigPicture)
 	{
 		self.clickBigPictureBtn.hidden = NO;
 		self.imageView.contentMode = UIViewContentModeTop;
 		self.imageView.clipsToBounds = YES;
+		NSLog(@"___是大图_____00000");
 	}
 	else
 	{
 		self.clickBigPictureBtn.hidden = YES;
 		self.imageView.contentMode = UIViewContentModeScaleToFill;
 		self.imageView.clipsToBounds = NO;
+		NSLog(@"___不是大图_____00000");
 	}
+	self.clickBigPictureBtn.hidden = NO;
+	
 }
 
 
