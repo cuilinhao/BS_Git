@@ -39,13 +39,27 @@
 		if (!image) return;
 		
 		self.placeholderView.hidden = YES;
+		//处理超长图片的大小
+#pragma mark - 	对于大图片处理为 等比例修改 例如：300 x 400 = 355 x （355 *400/300）
+#pragma mark -对于超长图片，这里使用安比例进行处理，用Context 将图片的rect进行修改，然后再进行渲染view
+		if (topic.isBigPicture) {
+			CGFloat imageW = topic.middleFrame.size.width;
+			CGFloat imageH = imageW * topic.height / topic.width;
+			
+			//开启上下文
+			UIGraphicsBeginImageContext(CGSizeMake(imageW, imageH));
+			//绘制图片到上下文
+			[self.imageView.image drawInRect:CGRectMake(0, 0, imageW, imageH)];
+			self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+			//关闭上下文
+			UIGraphicsEndImageContext();
+		}
 	}];
 	
 	//gif
 	XMGLog(@"---------%@----%@---%@", topic.image0, topic.image1, topic.image2);
 	
 	self.gifView.hidden = !topic.is_gif;
-	UIScreen
 	//看大图
 	if (topic.isBigPicture)
 	{
