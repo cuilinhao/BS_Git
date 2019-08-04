@@ -7,8 +7,9 @@
 //
 
 #import "XMGTopicPictureView.h"
-
 #import "XMGTopic.h"
+#import "XMGSeeBigPictureViewController.h"
+
 
 
 @interface XMGTopicPictureView ()
@@ -57,7 +58,7 @@
 	}];
 	
 	//gif
-	XMGLog(@"---------%@----%@---%@", topic.image0, topic.image1, topic.image2);
+	//XMGLog(@"---------%@----%@---%@", topic.image0, topic.image1, topic.image2);
 	
 	self.gifView.hidden = !topic.is_gif;
 	//看大图
@@ -66,22 +67,26 @@
 		self.clickBigPictureBtn.hidden = NO;
 		self.imageView.contentMode = UIViewContentModeTop;
 		self.imageView.clipsToBounds = YES;
-		NSLog(@"___是大图_____00000");
+		//NSLog(@"___是大图_____00000");
 	}
 	else
 	{
 		self.clickBigPictureBtn.hidden = YES;
 		self.imageView.contentMode = UIViewContentModeScaleToFill;
 		self.imageView.clipsToBounds = NO;
-		NSLog(@"___不是大图_____00000");
+		//NSLog(@"___不是大图_____00000");
 	}
 	self.clickBigPictureBtn.hidden = NO;
 	
 }
 
-
+//MARK:- 查看大图
 - (IBAction)seeBigButtonClick:(id)sender {
 	
+	XMGSeeBigPictureViewController * vc = [[XMGSeeBigPictureViewController alloc] init];
+	vc.topic = self.topic;
+
+	[self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 @end

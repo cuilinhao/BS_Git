@@ -246,22 +246,26 @@ static NSString * const XMGTopicCellId = @"XMGTopicCellId";
     return self.topics.count;
 }
 
-//MARK:--配置cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XMGTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:XMGTopicCellId];
-    
-    NSLog(@"------%@", self.topics);
-    
-    
     cell.topic = self.topics[indexPath.row];
-    
+	
+	NSLog(@"______%s", __func__);
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 200;
+}
+
 
 #pragma mark - 代理方法
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	NSLog(@"______%s", __func__);
+	//XMGFunc
     return self.topics[indexPath.row].cellHeight;
 }
 
