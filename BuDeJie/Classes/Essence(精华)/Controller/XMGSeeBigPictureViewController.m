@@ -219,10 +219,72 @@ Foundation 和Core Foundation 的数据类型可以相互转换，比如 NSStrin
 	}
 	 */
 	
-	self.createdCollection;
+    //请求,检查d访问权限,
+    //如果用户还没有做出选择，会自动弹框，用户选择后，才会执行block
+    //如果之前已经做出选择，会直接执行block
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(status == PHAuthorizationStatusDenied)
+            {//拒绝app访问
+            }
+            else if (status == PHAuthorizationStatusAuthorized)
+            {//允许当前app访问
+                [self _saveImageIntoAlbum];
+            }
+            else if (status == PHAuthorizationStatusRestricted)
+            {//无法访问
+                [SVProgressHUD showErrorWithStatus:@"因系统原因，无法访问相册"];
+            }
+                
+        });
+        
+        
+    }];
+    
+    
+    
 	
 }
 
+- (void)_saveImageIntoAlbum
+{
+    
+    // 获得相片
+    PHFetchResult<PHAsset *> *createdAssets = self.createdAssets;
+    if (createdAssets == nil) {
+        [SVProgressHUD showErrorWithStatus:@"保存图片失败！"];
+        return;
+    }
+    
+    // 获得相册
+    PHAssetCollection *createdCollection = self.createdCollection;
+    if (createdCollection == nil) {
+        [SVProgressHUD showErrorWithStatus:@"创建或者获取相册失败！"];
+        return;
+    }
+    
+    // 添加刚才保存的图片到【自定义相册】
+    NSError *error = nil;
+    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
+        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    } error:&error];
+    
+    // 最后的判断
+    if (error) {
+        [SVProgressHUD showErrorWithStatus:@"保存图片失败！"];
+    } else {
+        [SVProgressHUD showSuccessWithStatus:@"保存图片成功！"];
+    }
+}
+
+/** 注释
+ 崩溃
+ 2019-08-12 11:03:14.156 BuDeJie[72549:312225] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '*** -[__NSPlaceholderArray initWithObjects:count:]: attempt to insert nil object from objects[0]'
+ *** First throw call stack:
+ *
+ 
+ */
 - (PHAssetCollection *)createdCollection
 {
 	//获取软件名字
@@ -251,10 +313,26 @@ Foundation 和Core Foundation 的数据类型可以相互转换，比如 NSStrin
 		[SVProgressHUD showErrorWithStatus:@"创建失败"];
 		return nil;
 	}
-	
+    
+	//根据唯一标识获得刚才创建的相册
 	return [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[ID] options:nil].firstObject;
 	
+}
 
+- (PHFetchResult<PHAsset *> *)createdAssets
+{
+    NSError *error = nil;
+    __block NSString *assetID = nil;
+    
+    // 保存图片到【相机胶卷】
+    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+        assetID = [PHAssetChangeRequest creationRequestForAssetFromImage:self.imageView.image].placeholderForCreatedAsset.localIdentifier;
+    } error:&error];
+    
+    if (error) return nil;
+    
+    // 获取刚才保存的相片
+    return [PHAsset fetchAssetsWithLocalIdentifiers:@[assetID] options:nil];
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo

@@ -10,12 +10,16 @@
 #import "XMGTopic.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
+#import "XMGSeeBigPictureViewController.h"
+
 
 @interface XMGTopicVoiceView()
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *voicetimeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderView;
+
 @end
 
 @implementation XMGTopicVoiceView
@@ -24,6 +28,19 @@
 {
 	[super awakeFromNib];
     self.autoresizingMask = UIViewAutoresizingNone;
+     [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+    self.imageView.userInteractionEnabled = YES;
+    
+}
+
+/**
+ *  查看大图
+ */
+- (void)seeBigPicture
+{
+    XMGSeeBigPictureViewController *vc = [[XMGSeeBigPictureViewController alloc] init];
+    vc.topic = self.topic;
+    [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)setTopic:(XMGTopic *)topic

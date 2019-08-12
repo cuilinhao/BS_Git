@@ -152,7 +152,7 @@ static NSString * const XMGTopicCellId = @"XMGTopicCellId";
 #pragma mark - 数据处理
 - (XMGTopicType)type
 {
-    return XMGTopicTypePicture;
+    return XMGTopicTypeVoice;
 }
 
 /**
