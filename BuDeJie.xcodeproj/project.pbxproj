@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5148FE3E23026A30003CADC9 /* XMGTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5148FE3D23026A30003CADC9 /* XMGTopicViewController.m */; };
 		700334B01C92758C00B04292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 700334AE1C92758C00B04292 /* Main.storyboard */; };
 		700334B21C92758C00B04292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 700334B11C92758C00B04292 /* Assets.xcassets */; };
 		700334B51C92758C00B04292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 700334B31C92758C00B04292 /* LaunchScreen.storyboard */; };
@@ -93,6 +94,8 @@
 
 /* Begin PBXFileReference section */
 		3324F85D82C2FFE434E216D3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5148FE3C23026A30003CADC9 /* XMGTopicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMGTopicViewController.h; sourceTree = "<group>"; };
+		5148FE3D23026A30003CADC9 /* XMGTopicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMGTopicViewController.m; sourceTree = "<group>"; };
 		700334A21C92758C00B04292 /* BuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		700334AF1C92758C00B04292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		700334B11C92758C00B04292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -307,6 +310,11 @@
 		700334CB1C92A96D00B04292 /* Essence(精华) */ = {
 			isa = PBXGroup;
 			children = (
+				700334E51C92A9BC00B04292 /* XMGEssenceViewController.h */,
+				700334E61C92A9BC00B04292 /* XMGEssenceViewController.m */,
+				70F7B8C322F1CA5700C52C0A /* XMGSeeBigPictureViewController.h */,
+				70F7B8C522F1CA5800C52C0A /* XMGSeeBigPictureViewController.m */,
+				70F7B8C422F1CA5700C52C0A /* XMGSeeBigPictureViewController.xib */,
 				700334CC1C92A96D00B04292 /* Controller */,
 				700334CD1C92A96D00B04292 /* Model */,
 				700334CE1C92A96D00B04292 /* View */,
@@ -317,8 +325,8 @@
 		700334CC1C92A96D00B04292 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				700334E51C92A9BC00B04292 /* XMGEssenceViewController.h */,
-				700334E61C92A9BC00B04292 /* XMGEssenceViewController.m */,
+				5148FE3C23026A30003CADC9 /* XMGTopicViewController.h */,
+				5148FE3D23026A30003CADC9 /* XMGTopicViewController.m */,
 				704A2C6D1C9BF27600E58C76 /* XMGAllViewController.h */,
 				704A2C6E1C9BF27600E58C76 /* XMGAllViewController.m */,
 				704A2C711C9BF27600E58C76 /* XMGVideoViewController.h */,
@@ -329,9 +337,6 @@
 				704A2C701C9BF27600E58C76 /* XMGPictureViewController.m */,
 				704A2C751C9BF27600E58C76 /* XMGWordViewController.h */,
 				704A2C761C9BF27600E58C76 /* XMGWordViewController.m */,
-				70F7B8C322F1CA5700C52C0A /* XMGSeeBigPictureViewController.h */,
-				70F7B8C522F1CA5800C52C0A /* XMGSeeBigPictureViewController.m */,
-				70F7B8C422F1CA5700C52C0A /* XMGSeeBigPictureViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -916,6 +921,7 @@
 				700334E71C92A9BC00B04292 /* XMGEssenceViewController.m in Sources */,
 				700334F31C92AA0B00B04292 /* XMGPublishViewController.m in Sources */,
 				704A2C7A1C9BF27600E58C76 /* XMGVoiceViewController.m in Sources */,
+				5148FE3E23026A30003CADC9 /* XMGTopicViewController.m in Sources */,
 				700334FE1C92BEE000B04292 /* UIImage+Image.m in Sources */,
 				700BD5611C9806F700B4E90B /* XMGFastLoginView.m in Sources */,
 				7019DB591C979B3100E614F4 /* XMGADItem.m in Sources */,
