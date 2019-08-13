@@ -20,6 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    /** 如果这样写，会有问题，因为，
+     在调用super时候，就会使用到type，
+     所以在这个地方写，是有问题的
+     
+     */
+    //self.type = XMGTopicTypeAll;
 }
 
 - (XMGTopicType)type

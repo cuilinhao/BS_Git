@@ -45,6 +45,11 @@
 
 @implementation XMGTopicViewController
 
+- (XMGTopicType)type
+{
+    return 0;
+}
+
 /* cell的重用标识 */
 static NSString * const XMGTopicCellId = @"XMGTopicCellId";
 

@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XMGTopicViewController : UITableViewController
 
-//@property (nonatomic, assign) XMGTopicType  type;
+//只生成getter方法， 多生成一个下划线的成员变量
+//@property (nonatomic, assign, readonly) XMGTopicType  type;
+
 - (XMGTopicType)type;
 
 @end
