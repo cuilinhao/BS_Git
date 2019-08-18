@@ -53,6 +53,10 @@
 - (IBAction)clickJump:(id)sender {
     // 销毁广告界面,进入主框架界面
     XMGTabBarController *tabBarVc = [[XMGTabBarController alloc] init];
+	
+	//设置代理
+//	tabBarVc.delegate = (id<UITabBarControllerDelegate>)[UIApplication sharedApplication].delegate;
+	
     [UIApplication sharedApplication].keyWindow.rootViewController = tabBarVc;
     
     // 干掉定时器
